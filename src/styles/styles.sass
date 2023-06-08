@@ -1,0 +1,311 @@
+body
+  color: #28302C
+
+.playfield
+  background: #14bdac
+  padding: 10px 0
+  position: relative
+  z-index: 0
+  width: 174px
+  height: 174px
+
+  .rows-border
+    &:before
+      content: ' '
+      display: block
+      top: 68px
+      height: 3px
+      background: #0da192
+      position: absolute
+      left: 0
+      width: 100%
+
+    &:after
+      content: ' '
+      display: block
+      top: 123px
+      height: 3px
+      background: #0da192
+      position: absolute
+      left: 0
+      width: 100%
+
+  .cols-border
+    &:before
+      content: ' '
+      display: block
+      left: 58px
+      width: 3px
+      background: #0da192
+      position: absolute
+      top: 0
+      height: 100%
+
+    &:after
+      content: ' '
+      display: block
+      left: 112px
+      width: 3px
+      background: #0da192
+      position: absolute
+      top: 0
+      height: 100%
+
+  .win-background
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background: rgba(0,0,0,0.3)
+    visibility: hidden
+    opacity: 0
+    z-index: 100
+    transition: 1s ease-out
+
+    &.active
+      visibility: visible
+      opacity: 1
+
+    img
+      position: absolute
+      top: calc(50% - 432px)
+      transform: scale(0.26)
+      left: calc(50% - 256px)
+
+  .win-message
+    font-size: 64px
+    color: #fff
+    visibility: hidden
+    opacity: 0
+    z-index: 100
+    transition: 1s ease-out
+    position: fixed
+    top: calc(50% - -100px)
+    width: 100%
+    left: 0
+    text-align: center
+
+    &.active
+      visibility: visible
+      opacity: 1
+
+  .win-emoji
+    display: flex
+    align-items: center
+    justify-content: center
+    font-size: 48px
+    color: #fff
+    visibility: hidden
+    opacity: 0
+    z-index: 100
+    transition: 1s ease-out
+
+    &.active
+      visibility: visible
+      opacity: 1
+
+  table
+    border-spacing: 6px
+    position: relative
+    z-index: 3
+
+    tr
+      border-spacing: 6px
+      margin: 0 auto
+      position: relative
+      z-index: 3
+
+      td
+        height: 48px
+        position: relative
+        vertical-align: top
+        width: 48px
+        cursor: pointer
+
+        svg
+          height: 48px
+          position: absolute
+          vertical-align: top
+          width: 48px
+
+
+
+
+.game-area
+  background: #14bdac
+  width: 100%
+  height: 100vh
+  display: flex
+  align-items: center
+  justify-content: center
+
+  .new-game-link
+    font-size: 24px
+    text-decoration: underline
+    text-underline-position: under
+    margin-top: 40px
+    cursor: pointer
+
+  svg.game
+    height: 100%
+    left: 0
+    position: absolute
+    top: 0
+
+    .game path
+      stroke: #0da192
+      stroke-width: 6px
+      transition-duration: 0.375s
+      -webkit-transition-duration: 0.375s
+
+
+.settings
+  position: fixed
+  top: 20px
+  left: 20px
+
+
+.user-panel
+  position: fixed
+  top: 20px
+  right: 20px
+  display: flex
+
+  span
+    font-weight: bold
+    margin-right: 36px
+
+  div
+    color: #717171
+    cursor: pointer
+    text-decoration: underline
+    text-underline-position: under
+
+.game-menu
+  background-color: #f3f3f3e3
+  background-size: contain
+  width: 420px
+  height: 315px
+  top: calc(50% - 210px)
+  left: calc(50% - 157.5px)
+  display: flex
+  align-items: center
+  justify-content: center
+  text-align: center
+  border-radius: 12px
+  -webkit-border-radius: 12px
+  -moz-border-radius: 12px
+  -webkit-box-shadow: 0px 10px 21px 0px rgba(32,77,59,0.1)
+  -moz-box-shadow: 0px 10px 21px 0px rgba(32,77,59,0.1)
+  box-shadow: 0px 10px 21px 0px rgba(32,77,59,0.1)
+  flex-direction: column
+
+  &.login-form
+    height: 231px
+    top: calc(50% - 107px)
+
+  &.register-form
+    height: 323px
+    top: calc(50% - 153px)
+
+  &.confirm-form
+    height: 201px
+    top: calc(50% - 92px)
+
+  &.form
+    display: block
+    text-align: left
+    padding: 40px 35px
+
+  .group
+    margin-bottom: 15px
+
+  .error-text
+    margin-bottom: 17px
+    font-size: 15px
+    height: 17px
+
+  label
+    width: 100%
+    display: block
+    margin-bottom: 7px
+    font-size: 14px
+
+    &.confirm-label
+      font-size: 16px
+
+  input
+    outline: none
+    box-shadow: none
+    border: none
+    line-height: 37px
+    height: 37px
+    padding: 0 15px
+    border-radius: 8px
+    -webkit-border-radius: 8px
+    -moz-border-radius: 8px
+    width: calc(100% - 35px)
+    color: #494B4A
+
+    &:-internal-autofill-selected
+      background-color: #fff !important
+
+    &:focus,&:focus-visible
+      outline: none
+      box-shadow: none
+
+  .button-group
+    display: flex
+    justify-content: flex-start
+    margin: 0 auto
+    width: fit-content
+
+    .button:first-child
+      margin-right: 12px
+
+      &.gray
+        background-color: #C4C9C6
+        color: #494B4A
+
+      & + .button
+        margin-top: 0px
+
+
+  .button
+    background-color: #335181
+    color: #ffffff
+    border-radius: 8px
+    -webkit-border-radius: 8px
+    -moz-border-radius: 8px
+    padding: 15px 35px
+    cursor: pointer
+    -webkit-box-shadow: 0px 10px 21px 0px rgba(32,77,59,0.1)
+    -moz-box-shadow: 0px 10px 21px 0px rgba(32,77,59,0.1)
+    box-shadow: 0px 10px 21px 0px rgba(32,77,59,0.1)
+
+    & + .button
+      margin-top: 10px
+
+  p
+    font-size: 14px
+
+.history-table
+  background-color: #ffffff
+  border-radius: 8px
+  -webkit-border-radius: 8px
+  -moz-border-radius: 8px
+  padding: 0 20px 20px
+
+
+  th
+    text-align: left
+    padding: 8px 8px
+
+  td
+    padding: 4px 8px
+    font-size: 14px
+
+    &:last-child
+      text-align: center
+      font-weight: bold

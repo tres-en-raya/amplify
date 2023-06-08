@@ -1,0 +1,429 @@
+# This file was generated. Do not edit manually.
+
+schema {
+    query: Query
+    mutation: Mutation
+    subscription: Subscription
+}
+
+"Tells the service this field/object has access authorized by an API key."
+directive @aws_api_key on OBJECT | FIELD_DEFINITION
+
+"Directs the schema to enforce authorization on a field"
+directive @aws_auth(
+    "List of cognito user pool groups which have access on this field"
+    cognito_groups: [String]
+) on FIELD_DEFINITION
+
+"Tells the service this field/object has access authorized by a Cognito User Pools token."
+directive @aws_cognito_user_pools(
+    "List of cognito user pool groups which have access on this field"
+    cognito_groups: [String]
+) on OBJECT | FIELD_DEFINITION
+
+"Tells the service this field/object has access authorized by sigv4 signing."
+directive @aws_iam on OBJECT | FIELD_DEFINITION
+
+"Tells the service this field/object has access authorized by a Lambda Authorizer."
+directive @aws_lambda on OBJECT | FIELD_DEFINITION
+
+"Tells the service this field/object has access authorized by an OIDC token."
+directive @aws_oidc on OBJECT | FIELD_DEFINITION
+
+"Tells the service which subscriptions will be published to when this mutation is called. This directive is deprecated use @aws_susbscribe directive instead."
+directive @aws_publish(
+    "List of subscriptions which will be published to when this mutation is called."
+    subscriptions: [String]
+) on FIELD_DEFINITION
+
+"Tells the service which mutation triggers this subscription."
+directive @aws_subscribe(
+    "List of mutations which will trigger this subscription when they are called."
+    mutations: [String]
+) on FIELD_DEFINITION
+
+"This directive allows results to be deferred during execution"
+directive @defer on FIELD
+
+type History {
+    createdAt: AWSDateTime!
+    email: String
+    ganador: Int!
+    id: ID!
+    play: String
+    uid: String
+    updatedAt: AWSDateTime!
+}
+
+type ModelHistoryConnection {
+    items: [History]!
+    nextToken: String
+}
+
+type ModelResultsConnection {
+    items: [Results]!
+    nextToken: String
+}
+
+type ModelScoresConnection {
+    items: [Scores]!
+    nextToken: String
+}
+
+type Mutation {
+    createHistory(condition: ModelHistoryConditionInput, input: CreateHistoryInput!): History
+    createResults(condition: ModelResultsConditionInput, input: CreateResultsInput!): Results
+    createScores(condition: ModelScoresConditionInput, input: CreateScoresInput!): Scores
+    deleteHistory(condition: ModelHistoryConditionInput, input: DeleteHistoryInput!): History
+    deleteResults(condition: ModelResultsConditionInput, input: DeleteResultsInput!): Results
+    deleteScores(condition: ModelScoresConditionInput, input: DeleteScoresInput!): Scores
+    updateHistory(condition: ModelHistoryConditionInput, input: UpdateHistoryInput!): History
+    updateResults(condition: ModelResultsConditionInput, input: UpdateResultsInput!): Results
+    updateScores(condition: ModelScoresConditionInput, input: UpdateScoresInput!): Scores
+}
+
+type Query {
+    getHistory(id: ID!): History
+    getResults(id: ID!): Results
+    getScores(id: ID!): Scores
+    listHistories(filter: ModelHistoryFilterInput, limit: Int, nextToken: String): ModelHistoryConnection
+    listResults(filter: ModelResultsFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelResultsConnection
+    listScores(filter: ModelScoresFilterInput, limit: Int, nextToken: String): ModelScoresConnection
+}
+
+type Results {
+    createTime: AWSTimestamp!
+    createdAt: AWSDateTime!
+    email: String
+    ganador: String
+    id: ID!
+    play: Int
+    sub: String
+    updatedAt: AWSDateTime!
+}
+
+type Scores {
+    createdAt: AWSDateTime!
+    email: String
+    ganador: String
+    id: ID!
+    play: Int
+    updatedAt: AWSDateTime!
+}
+
+type Subscription {
+    onCreateHistory(filter: ModelSubscriptionHistoryFilterInput): History
+    onCreateResults(filter: ModelSubscriptionResultsFilterInput): Results
+    onCreateScores(filter: ModelSubscriptionScoresFilterInput): Scores
+    onDeleteHistory(filter: ModelSubscriptionHistoryFilterInput): History
+    onDeleteResults(filter: ModelSubscriptionResultsFilterInput): Results
+    onDeleteScores(filter: ModelSubscriptionScoresFilterInput): Scores
+    onUpdateHistory(filter: ModelSubscriptionHistoryFilterInput): History
+    onUpdateResults(filter: ModelSubscriptionResultsFilterInput): Results
+    onUpdateScores(filter: ModelSubscriptionScoresFilterInput): Scores
+}
+
+enum ModelAttributeTypes {
+    _null
+    binary
+    binarySet
+    bool
+    list
+    map
+    number
+    numberSet
+    string
+    stringSet
+}
+
+enum ModelSortDirection {
+    ASC
+    DESC
+}
+
+"The `AWSDateTime` scalar type provided by AWS AppSync, represents a valid ***extended*** [ISO 8601 DateTime](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) string. In other words, this scalar type accepts datetime strings of the form `YYYY-MM-DDThh:mm:ss.SSSZ`.  The scalar can also accept \"negative years\" of the form `-YYYY` which correspond to years before `0000`. For example, \"**-2017-01-01T00:00Z**\" and \"**-9999-01-01T00:00Z**\" are both valid datetime strings.  The field after the two digit seconds field is a nanoseconds field. It can accept between 1 and 9 digits. So, for example, \"**1970-01-01T12:00:00.2Z**\", \"**1970-01-01T12:00:00.277Z**\" and \"**1970-01-01T12:00:00.123456789Z**\" are all valid datetime strings.  The seconds and nanoseconds fields are optional (the seconds field must be specified if the nanoseconds field is to be used).  The [time zone offset](https://en.wikipedia.org/wiki/ISO_8601#Time_zone_designators) is compulsory for this scalar. The time zone offset must either be `Z` (representing the UTC time zone) or be in the format `±hh:mm:ss`. The seconds field in the timezone offset will be considered valid even though it is not part of the ISO 8601 standard."
+scalar AWSDateTime
+
+"The `AWSTimestamp` scalar type provided by AWS AppSync, represents the number of seconds that have elapsed since `1970-01-01T00:00Z`. Negative values are also accepted and these represent the number of seconds till `1970-01-01T00:00Z`.  Timestamps are serialized and deserialized as integers. The minimum supported timestamp value is **`-31557014167219200`** which corresponds to `-1000000000-01-01T00:00Z`. The maximum supported timestamp value is **`31556889864403199`** which corresponds to `1000000000-12-31T23:59:59.999999999Z`."
+scalar AWSTimestamp
+
+input CreateHistoryInput {
+    email: String
+    ganador: Int!
+    id: ID
+    play: String
+    uid: String
+}
+
+input CreateResultsInput {
+    createTime: AWSTimestamp
+    email: String
+    ganador: String
+    id: ID
+    play: Int
+    sub: String
+}
+
+input CreateScoresInput {
+    email: String
+    ganador: String
+    id: ID
+    play: Int
+}
+
+input DeleteHistoryInput {
+    id: ID!
+}
+
+input DeleteResultsInput {
+    id: ID!
+}
+
+input DeleteScoresInput {
+    id: ID!
+}
+
+input ModelBooleanInput {
+    attributeExists: Boolean
+    attributeType: ModelAttributeTypes
+    eq: Boolean
+    ne: Boolean
+}
+
+input ModelFloatInput {
+    attributeExists: Boolean
+    attributeType: ModelAttributeTypes
+    between: [Float]
+    eq: Float
+    ge: Float
+    gt: Float
+    le: Float
+    lt: Float
+    ne: Float
+}
+
+input ModelHistoryConditionInput {
+    and: [ModelHistoryConditionInput]
+    email: ModelStringInput
+    ganador: ModelIntInput
+    not: ModelHistoryConditionInput
+    or: [ModelHistoryConditionInput]
+    play: ModelStringInput
+    uid: ModelStringInput
+}
+
+input ModelHistoryFilterInput {
+    and: [ModelHistoryFilterInput]
+    email: ModelStringInput
+    ganador: ModelIntInput
+    id: ModelIDInput
+    not: ModelHistoryFilterInput
+    or: [ModelHistoryFilterInput]
+    play: ModelStringInput
+    uid: ModelStringInput
+}
+
+input ModelIDInput {
+    attributeExists: Boolean
+    attributeType: ModelAttributeTypes
+    beginsWith: ID
+    between: [ID]
+    contains: ID
+    eq: ID
+    ge: ID
+    gt: ID
+    le: ID
+    lt: ID
+    ne: ID
+    notContains: ID
+    size: ModelSizeInput
+}
+
+input ModelIntInput {
+    attributeExists: Boolean
+    attributeType: ModelAttributeTypes
+    between: [Int]
+    eq: Int
+    ge: Int
+    gt: Int
+    le: Int
+    lt: Int
+    ne: Int
+}
+
+input ModelResultsConditionInput {
+    and: [ModelResultsConditionInput]
+    email: ModelStringInput
+    ganador: ModelStringInput
+    not: ModelResultsConditionInput
+    or: [ModelResultsConditionInput]
+    play: ModelIntInput
+    sub: ModelStringInput
+}
+
+input ModelResultsFilterInput {
+    and: [ModelResultsFilterInput]
+    email: ModelStringInput
+    ganador: ModelStringInput
+    id: ModelIDInput
+    not: ModelResultsFilterInput
+    or: [ModelResultsFilterInput]
+    play: ModelIntInput
+    sub: ModelStringInput
+}
+
+input ModelScoresConditionInput {
+    and: [ModelScoresConditionInput]
+    email: ModelStringInput
+    ganador: ModelStringInput
+    not: ModelScoresConditionInput
+    or: [ModelScoresConditionInput]
+    play: ModelIntInput
+}
+
+input ModelScoresFilterInput {
+    and: [ModelScoresFilterInput]
+    email: ModelStringInput
+    ganador: ModelStringInput
+    id: ModelIDInput
+    not: ModelScoresFilterInput
+    or: [ModelScoresFilterInput]
+    play: ModelIntInput
+}
+
+input ModelSizeInput {
+    between: [Int]
+    eq: Int
+    ge: Int
+    gt: Int
+    le: Int
+    lt: Int
+    ne: Int
+}
+
+input ModelStringInput {
+    attributeExists: Boolean
+    attributeType: ModelAttributeTypes
+    beginsWith: String
+    between: [String]
+    contains: String
+    eq: String
+    ge: String
+    gt: String
+    le: String
+    lt: String
+    ne: String
+    notContains: String
+    size: ModelSizeInput
+}
+
+input ModelSubscriptionBooleanInput {
+    eq: Boolean
+    ne: Boolean
+}
+
+input ModelSubscriptionFloatInput {
+    between: [Float]
+    eq: Float
+    ge: Float
+    gt: Float
+    in: [Float]
+    le: Float
+    lt: Float
+    ne: Float
+    notIn: [Float]
+}
+
+input ModelSubscriptionHistoryFilterInput {
+    and: [ModelSubscriptionHistoryFilterInput]
+    email: ModelSubscriptionStringInput
+    ganador: ModelSubscriptionIntInput
+    id: ModelSubscriptionIDInput
+    or: [ModelSubscriptionHistoryFilterInput]
+    play: ModelSubscriptionStringInput
+    uid: ModelSubscriptionStringInput
+}
+
+input ModelSubscriptionIDInput {
+    beginsWith: ID
+    between: [ID]
+    contains: ID
+    eq: ID
+    ge: ID
+    gt: ID
+    in: [ID]
+    le: ID
+    lt: ID
+    ne: ID
+    notContains: ID
+    notIn: [ID]
+}
+
+input ModelSubscriptionIntInput {
+    between: [Int]
+    eq: Int
+    ge: Int
+    gt: Int
+    in: [Int]
+    le: Int
+    lt: Int
+    ne: Int
+    notIn: [Int]
+}
+
+input ModelSubscriptionResultsFilterInput {
+    and: [ModelSubscriptionResultsFilterInput]
+    email: ModelSubscriptionStringInput
+    ganador: ModelSubscriptionStringInput
+    id: ModelSubscriptionIDInput
+    or: [ModelSubscriptionResultsFilterInput]
+    play: ModelSubscriptionIntInput
+    sub: ModelSubscriptionStringInput
+}
+
+input ModelSubscriptionScoresFilterInput {
+    and: [ModelSubscriptionScoresFilterInput]
+    email: ModelSubscriptionStringInput
+    ganador: ModelSubscriptionStringInput
+    id: ModelSubscriptionIDInput
+    or: [ModelSubscriptionScoresFilterInput]
+    play: ModelSubscriptionIntInput
+}
+
+input ModelSubscriptionStringInput {
+    beginsWith: String
+    between: [String]
+    contains: String
+    eq: String
+    ge: String
+    gt: String
+    in: [String]
+    le: String
+    lt: String
+    ne: String
+    notContains: String
+    notIn: [String]
+}
+
+input UpdateHistoryInput {
+    email: String
+    ganador: Int
+    id: ID!
+    play: String
+    uid: String
+}
+
+input UpdateResultsInput {
+    email: String
+    ganador: String
+    id: ID!
+    play: Int
+    sub: String
+}
+
+input UpdateScoresInput {
+    email: String
+    ganador: String
+    id: ID!
+    play: Int
+}

@@ -1,0 +1,9 @@
+type Results @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  ganador: String
+  play: Int
+  email: String
+  sub: String
+  createTime: AWSTimestamp!
+}
+ 

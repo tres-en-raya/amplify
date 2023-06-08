@@ -1,0 +1,33 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-atyltintresenraya-staging-83759-authRole",
+      "UnauthRoleArn": "arn:aws:iam::837863414088:role/amplify-atyltintresenraya-staging-83759-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::837863414088:role/amplify-atyltintresenraya-staging-83759-authRole",
+      "Region": "eu-north-1",
+      "DeploymentBucketName": "amplify-atyltintresenraya-staging-83759-deployment",
+      "UnauthRoleName": "amplify-atyltintresenraya-staging-83759-unauthRole",
+      "StackName": "amplify-atyltintresenraya-staging-83759",
+      "StackId": "arn:aws:cloudformation:eu-north-1:837863414088:stack/amplify-atyltintresenraya-staging-83759/7c1cfff0-e344-11ed-8d75-0a10818d219c",
+      "AmplifyAppId": "d3sm1rvra71nh7"
+    },
+    "categories": {
+      "auth": {
+        "atyltintresenraya": {}
+      }
+    }
+  },
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-tresenraya-dev-111235-authRole",
+      "UnauthRoleArn": "arn:aws:iam::837863414088:role/amplify-tresenraya-dev-111235-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::837863414088:role/amplify-tresenraya-dev-111235-authRole",
+      "Region": "eu-north-1",
+      "DeploymentBucketName": "amplify-tresenraya-dev-111235-deployment",
+      "UnauthRoleName": "amplify-tresenraya-dev-111235-unauthRole",
+      "StackName": "amplify-tresenraya-dev-111235",
+      "StackId": "arn:aws:cloudformation:eu-north-1:837863414088:stack/amplify-tresenraya-dev-111235/c6bc77b0-ceeb-11ed-93f9-0e6fb935e0ca",
+      "AmplifyAppId": "d3t3qxjay1rw6k"
+    }
+  }
+}

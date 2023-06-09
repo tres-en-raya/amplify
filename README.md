@@ -1,8 +1,16 @@
 # Comandos utilizados
 
+## Aprovisionar entorno
+### `npm install`
+
+## Ejecutar aplicación
+### `npm run start`
 
 ## Cliente amplify en Linux
 ### `npm curl -sL https://aws-amplify.github.io/amplify-cli/install | bash && $SHELL`
+
+## Configura la Cli de Amplify
+### `amplify configure`
 
 ## Funcionalidades añadidas. Estado local.
 ### `amplify status`
@@ -28,5 +36,3 @@
 ## Gestionar entornos
 ### `amplify env`
 
-## Configura la Cli de Amplify
-### `amplify configure`
